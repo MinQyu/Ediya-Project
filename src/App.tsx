@@ -1,12 +1,8 @@
 import Home from "./route/Home";
 import Drink from "./route/Drink";
 import News from "./route/News";
-import './App.css';
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-} from "react-router-dom";
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
