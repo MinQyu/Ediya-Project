@@ -1,0 +1,17 @@
+.promotion {
+  position: absolute;
+  width: 1440px;
+  height: 330px;
+  top: 537px;
+  left: -18px;
+  padding: 62px, 350px, 63px, 350px;
+  background: rgba(245, 245, 245, 1);
+}
+
+.promotionContainer {
+  position: absolute;
+  width: 740px;
+  height: 205px;
+  top: 62px;
+  left: 350px;
+}
