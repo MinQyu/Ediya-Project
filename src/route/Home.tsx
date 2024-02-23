@@ -4,7 +4,7 @@ import styles from "./Home.module.css";
 
 function Home() {
   return (
-    <div>
+    <div className={styles.HomeContainer}>
       <div className={styles.banner}>
         <Body />
       </div>

@@ -1,5 +1,9 @@
+.homeContainer {
+  align-items: center;
+}
+
 .promotion {
-  position: absolute;
+  position: relative;
   width: 1440px;
   height: 330px;
   top: 537px;
