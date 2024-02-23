@@ -1,16 +1,16 @@
 import styles from "./Body.module.css";
 import { Link } from "react-router-dom";
-import shake1 from "../image/쉐이크 1.png";
-import shake2 from "../image/쉐이크 2.png";
 
 function Body() {
+  const shake1Src = "/assets/쉐이크 1.png";
+  const shake2Src = "/assets/쉐이크 2.png";
   return (
-    <div>
+    <div className={styles.bodyContainer}>
+      <div className={styles.background}></div>
       <div className={styles.container}>
         <div className={styles.slogan}>
           <div className={styles.slogan__big}>
-            ALWAYS BESIDE YOU{" "}
-            <span className={styles.slogan__big__rear}>EDIYA COFFEE</span>
+            ALWAYS BESIDE YOU <span>EDIYA COFFEE</span>
           </div>
           <hr className={styles.line} />
           <div className={styles.slogan__small}>
@@ -23,10 +23,10 @@ function Body() {
           </Link>
         </button>
         <div className={styles.shake__2}>
-          <img src={shake2} alt="img" />
+          <img src={process.env.PUBLIC_URL + shake2Src} alt="img" />
         </div>
         <div className={styles.shake__1}>
-          <img src={shake1} alt="img" />
+          <img src={process.env.PUBLIC_URL + shake1Src} alt="img" />
         </div>
       </div>
     </div>

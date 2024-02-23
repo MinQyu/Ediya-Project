@@ -1,3 +1,6 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
+
 .header {
   position: absolute;
   display: flex;
@@ -28,7 +31,6 @@
 }
 
 .item {
-  font-family: SpoqaHanSans;
   font-size: 15px;
   font-weight: 400;
   line-height: 22.2px;
