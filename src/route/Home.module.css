@@ -14,6 +14,7 @@
 
 .promotionContainer {
   position: absolute;
+  display: flex;
   width: 740px;
   height: 205px;
   top: 62px;
