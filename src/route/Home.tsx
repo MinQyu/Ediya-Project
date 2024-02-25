@@ -5,12 +5,12 @@ import styles from "./Home.module.css";
 
 function Home() {
   return (
-    <div className={styles.HomeContainer}>
+    <div className={styles.container}>
       <div className={styles.banner}>
         <Body />
       </div>
       <div className={styles.promotion}>
-        <div className={styles.promotionContainer}>
+        <div className={styles.promotion_box}>
           <Intro />
           <Notice />
         </div>

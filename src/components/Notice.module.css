@@ -7,7 +7,7 @@
   text-decoration: none;
 }
 
-.container {
+.notice_area {
   position: absolute;
   display: inline-flex;
   width: 375px;
@@ -15,7 +15,7 @@
   left: 365px;
 }
 
-.noticeBox {
+.notice_box {
   position: relative;
   display: flex;
   width: 375px;
@@ -71,7 +71,7 @@
   cursor: pointer;
 }
 
-.contentWrap {
+.content_box {
   position: absolute;
   width: 250px;
   height: 105px;
@@ -79,7 +79,7 @@
   background: rgba(254, 254, 254, 1);
 }
 
-.contentWrap h3 {
+.content_box h3 {
   position: absolute;
   width: 215px;
   height: 15px;

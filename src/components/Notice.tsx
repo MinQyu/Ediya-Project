@@ -46,11 +46,11 @@ function Notice() {
   };
 
   return (
-    <div className={styles.container}>
+    <div className={styles.notice_area}>
       {loading ? (
         <div>loading..</div>
       ) : (
-        <div className={styles.noticeBox}>
+        <div className={styles.notice_box}>
           <div className={styles.control}>
             <Link to={"/notice"}>NOTICE</Link>
             <button
@@ -102,7 +102,7 @@ function Notice() {
               </svg>
             </button>
           </div>
-          <div className={styles.contentWrap}>
+          <div className={styles.content_box}>
             <Link to={"/notice"}>
               <h3>{noticeList && noticeList[noticeIndex].title}</h3>
               <p className={styles.date}>
