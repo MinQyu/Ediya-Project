@@ -1,4 +1,5 @@
 import Header from "./Header";
+import Footer from "./Footer";
 import styles from "./Layout.module.css";
 import { LayoutProps } from "../interfaces/interface";
 
@@ -9,6 +10,9 @@ function Layout({ children }: LayoutProps) {
         <Header />
       </div>
       {children}
+      <div className={styles.footer_wrap}>
+        <Footer />
+      </div>
     </div>
   );
 }
