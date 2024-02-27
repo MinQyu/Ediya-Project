@@ -12,14 +12,13 @@ function Intro() {
     getIntroId();
   }, []);
   return (
-    <div>
-      <iframe
-        title="Intro"
-        width="365px"
-        height="205px"
-        src={`https://www.youtube.com/embed/${introId}`}
-      ></iframe>
-    </div>
+    <iframe
+      title="Intro"
+      width="365px"
+      height="205px"
+      frameBorder="0"
+      src={`https://www.youtube.com/embed/${introId}`}
+    ></iframe>
   );
 }
 
