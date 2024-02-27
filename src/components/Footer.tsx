@@ -16,7 +16,7 @@ function Footer() {
       <hr className={styles.line} />
       <div className={styles.info_box}>
         <img src={process.env.PUBLIC_URL + "/assets/푸터 로고.svg"} />
-        <p className={styles.info}>
+        <div className={styles.info}>
           <p>
             서울특별시 강남구 논현로 636 이디야빌딩(서울특별시 강남구 논현동
             221-17)
@@ -36,7 +36,7 @@ function Footer() {
           <p>
             <span>대표이사</span> : 문창기
           </p>
-        </p>
+        </div>
         <p className={styles.copy}>
           ⓒ 2017 EDIYA COFFEE COMPANY. ALL RIGHTS RESERVED..
         </p>
