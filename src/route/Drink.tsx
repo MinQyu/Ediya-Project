@@ -55,11 +55,11 @@ function Drink() {
     }));
   };
 
-  const thottledrequestUpdate = _.throttle(requestUpdate, 2000);
+  const debouncedRequestUpdate = _.debounce(requestUpdate, 1000);
 
   function handleScroll() {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
-      thottledrequestUpdate();
+      debouncedRequestUpdate();
     }
   }
 
