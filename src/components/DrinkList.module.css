@@ -1,0 +1,20 @@
+.drink {
+    display: grid;
+    justify-content: center;
+    justify-items: center;
+    width: 359px;
+    height: 373px;
+    padding: 20px, 22px, 45px, 22px;
+    background: rgba(245, 245, 245, 1);
+}
+
+.drink img {
+    width: 204px;
+    height: 293px;
+}
+
+.drink p {
+    text-align: center;
+    width: 315px;
+    height: 14px;
+}
