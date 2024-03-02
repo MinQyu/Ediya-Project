@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    justify-content: center;
+}
+
+.drink_list {
+    padding-top: 30px;
+    width: 740px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(359px, 1fr));
+    grid-gap: 20px;
+}
