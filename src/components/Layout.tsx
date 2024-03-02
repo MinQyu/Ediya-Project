@@ -14,7 +14,7 @@ function Layout({ children }: LayoutProps) {
       <div className={styles.headerContainer}>
         <Header />
       </div>
-      {children}
+      <div className={styles.route_wrap}>{children}</div>
       <button className={styles.go_to_top_btn} onClick={goToTop}>
         <img src={process.env.PUBLIC_URL + "/assets/GoToTop.svg"} />
       </button>

@@ -16,6 +16,10 @@
   box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.1);
 }
 
+.route_wrap {
+  padding-top: 50px;
+}
+
 .go_to_top_btn {
   position: fixed;
   width: 50px;
