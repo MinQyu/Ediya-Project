@@ -28,6 +28,9 @@ function DrinkDetail({ sn, onClose }: ModalProps) {
         <div></div>
       ) : (
         <div className={styles.modal}>
+          <button onClick={handleClose}>
+            <img src={process.env.PUBLIC_URL + "/assets/Black.svg"}></img>
+          </button>
           <div className={styles.header}>
             <h3>{drinkDetail && drinkDetail.title}</h3>
             <h4>{drinkDetail && drinkDetail.englishTitle}</h4>

@@ -22,6 +22,22 @@
   background: rgba(255, 255, 255, 0.6);
 }
 
+.modal button {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  top: 16px;
+  left: 323px;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.modal button img {
+  width: 12.8px;
+  height: 12.8px;
+}
+
 .header {
   display: grid;
   align-self: center;
@@ -54,7 +70,7 @@
 }
 
 .content p {
-  display:flex;
+  display: flex;
   text-align: left;
 }
 
@@ -80,7 +96,7 @@
 }
 
 .footer_box table td {
-  width:60px;
+  width: 60px;
 }
 
 .vertical_line {
