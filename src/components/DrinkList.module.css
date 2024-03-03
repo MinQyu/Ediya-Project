@@ -6,6 +6,7 @@
     height: 373px;
     padding: 20px, 22px, 45px, 22px;
     background: rgba(245, 245, 245, 1);
+    cursor: pointer;
 }
 
 .drink img {

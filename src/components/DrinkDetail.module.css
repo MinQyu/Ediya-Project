@@ -1,0 +1,93 @@
+.modal_overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 500;
+}
+
+.modal {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-self: center;
+  align-self: center;
+  width: 359px;
+  height: 373px;
+  border: 1px solid rgba(204, 204, 204, 1);
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.header {
+  display: grid;
+  align-self: center;
+  margin-top: 30px;
+  width: 319px;
+  height: 54px;
+  border-bottom: 2px solid rgba(15, 15, 15, 1);
+  text-align: left;
+}
+
+.header h3 {
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+}
+
+.header h4 {
+  font-weight: 400;
+  line-height: 14px;
+  letter-spacing: -0.02em;
+  color: rgba(97, 97, 97, 1);
+}
+
+.content {
+  margin-top: 10px;
+  margin-left: 20px;
+  width: 296px;
+  height: 44px;
+}
+
+.content p {
+  display:flex;
+  text-align: left;
+}
+
+.footer_box {
+  position: absolute;
+  display: flex;
+  width: 357px;
+  height: 70px;
+  gap: 49px;
+  bottom: 0;
+}
+
+.footer_box table {
+  position: relative;
+  height: 49px;
+  top: 10px;
+  left: 26px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 13px;
+  letter-spacing: -0.02em;
+  text-align: left;
+}
+
+.footer_box table td {
+  width:60px;
+}
+
+.vertical_line {
+  position: absolute;
+  width: 1px;
+  height: 50px;
+  top: 10px;
+  left: 179px;
+  background-color: rgba(0, 0, 0, 1);
+}
