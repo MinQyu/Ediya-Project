@@ -1,0 +1,32 @@
+.container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 1440px;
+  height: 900px;
+}
+
+.navigation_wrap {
+  position: relative;
+  display: flex;
+  width: 480px;
+  height: 39px;
+  margin-top: 50px;
+}
+
+.headline {
+  position: relative;
+  display: flex;
+  width: 740px;
+  height: 70px;
+  margin-top: 30px;
+}
+
+.news_list_wrap {
+  position: relative;
+  display: flex;
+  width: 740px;
+  height: 624px;
+  padding: 15px;
+}
