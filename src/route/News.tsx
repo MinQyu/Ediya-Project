@@ -18,6 +18,20 @@ function News() {
         return null;
     }
   };
+  const headlineContent = () => {
+    switch (selectedItem) {
+      case "공지사항":
+        return "";
+      case "언론 속 이디야":
+        return "이디야의 소식을 전해드립니다";
+      case "홍보영상":
+        return "";
+      case "수상내역":
+        return "이디야의 영광스런 수상내역입니다";
+      default:
+        return null;
+    }
+  };
   return (
     <div className={styles.container}>
       <div className={styles.navigation_wrap}>
@@ -26,7 +40,13 @@ function News() {
           setSelectedItem={setSelectedItem}
         />
       </div>
-      <div className={styles.headline}>헤드라인</div>
+      <div className={styles.headline}>
+        <h3>
+          <span>\</span>
+          {selectedItem}
+        </h3>
+        <p>{headlineContent()}</p>
+      </div>
       <div className={styles.news_list_wrap}>뉴스리스트 컴포넌트</div>
     </div>
   );
