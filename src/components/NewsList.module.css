@@ -133,3 +133,10 @@ th {
   text-align: left;
   color: rgba(135, 135, 135, 1);
 }
+
+.no_list {
+  position: absolute;
+  display: flex;
+  top: 150px;
+  left: 20px;
+}
