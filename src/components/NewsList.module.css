@@ -1,0 +1,142 @@
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+.filter {
+  display: flex;
+  width: 440px;
+  height: 26px;
+  margin-left: 270px;
+}
+
+.filter select {
+  width: 80px;
+  height: 26px;
+  border-radius: 3px;
+  border: 1px solid rgba(200, 205, 226, 1);
+}
+
+.search_bar {
+  width: 355px;
+  height: 26px;
+  border-bottom: 0.5px solid rgba(15, 15, 15, 1);
+  margin-left: 5px;
+}
+
+.search_bar input {
+  width: 95%;
+  border: none;
+}
+
+.search_bar button {
+  width: 16px;
+  height: 16px;
+  border: none;
+  background: none;
+}
+
+.container table {
+  width: 710px;
+  height: 486px;
+  margin-top: 46px;
+  border-top: 2px solid rgba(36, 56, 141, 1);
+  border-bottom: 2px solid rgba(36, 56, 141, 1);
+  border-collapse: collapse;
+}
+
+th:nth-child(1) {
+  width: 46px;
+}
+
+th:nth-child(2) {
+  width: 579px;
+}
+
+th:nth-child(3) {
+  width: 85px;
+}
+
+.container table thead {
+  height: 36px;
+  border-bottom: 1px solid rgba(145, 155, 198, 1);
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: -0.02em;
+  color: rgba(36, 56, 141, 1);
+}
+
+td,
+th {
+  border-bottom: 0.5px solid rgba(145, 155, 198, 1);
+}
+
+.table__sn {
+  padding-left: ;
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  text-align: center;
+  color: rgba(36, 56, 141, 1);
+}
+
+.table__date {
+  font-size: 12px;
+  font-weight: 400;
+  line-height: 18px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: rgba(36, 56, 141, 1);
+}
+
+.container table td {
+  position: relative;
+  padding-top: 12px;
+  vertical-align: top;
+  text-align: center;
+}
+
+.container table td img {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  top: 15px;
+  left: 10px;
+}
+
+.container table td h3 {
+  position: absolute;
+  width: 490px;
+  height: 15px;
+  top: 15px;
+  left: 80px;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 15px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: rgba(36, 56, 141, 1);
+}
+
+.container table td p {
+  position: absolute;
+  width: 490px;
+  height: 40px;
+  top: 35px;
+  left: 80px;
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 20px;
+  letter-spacing: -0.02em;
+  text-align: left;
+  color: rgba(135, 135, 135, 1);
+}
+
+.no_list {
+  position: absolute;
+  display: flex;
+  top: 150px;
+  left: 20px;
+}

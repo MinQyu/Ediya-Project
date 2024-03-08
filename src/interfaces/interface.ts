@@ -45,3 +45,7 @@ export interface ArticleRequest {
   // *페이지 번호
   currentPage: number;
 }
+
+export interface NewsListProps {
+  newsList: ArticleData;
+}
