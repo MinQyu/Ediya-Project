@@ -1,0 +1,122 @@
+@import url(//spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css);
+* { font-family: 'Spoqa Han Sans Neo', 'sans-serif'; }
+
+.bodyContainer {
+  position: absolute;
+  width: 1440px;
+  height: 505px;
+  top: 50px;
+  background-color: rgba(254, 254, 254, 1);
+}
+
+.background {
+  position: absolute;
+  width: 1440px;
+  height: 260px;
+  background: rgba(186, 229, 251, 1);
+}
+
+.container {
+  position: absolute;
+  width: 740px;
+  height: 420px;
+  top: 50px;
+  left: 350px;
+}
+
+.slogan {
+  position: absolute;
+  width: 488px;
+  height: 113px;
+  left: 126px;
+}
+
+.slogan__big {
+  position: absolute;
+  white-space: nowrap;
+  width: 464px;
+  height: 34px;
+  left: 11px;
+  font-size: 31px;
+  font-weight: 250;
+  line-height: 34px;
+  letter-spacing: -0.04em;
+  text-align: center;
+  color: rgba(20, 24, 44, 0.9);
+}
+
+.slogan__big span {
+  text-align: center;
+  font-size: 31px;
+  font-weight: 700;
+  line-height: 34px;
+  letter-spacing: -0.04em;
+  color: rgba(36, 56, 141, 1);
+}
+
+.line {
+  position: absolute;
+  width: 40px;
+  top: 64px;
+  left: 222px;
+  border-width: 0.5px;
+  border-color: rgba(0, 0, 0, 1);
+}
+
+.slogan__small {
+  position: absolute;
+  width: 283px;
+  height: 21px;
+  top: 92px;
+  left: 101px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: -0.04em;
+  white-space: nowrap;
+  text-align: center;
+  color: rgba(20, 24, 44, 0.9);
+}
+
+.btn {
+  position: absolute;
+  width: 103px;
+  height: 31px;
+  top: 143px;
+  left: 316px;
+  padding: 8px, 24px, 8px, 24px;
+  gap: 10px;
+  border-width: 1px;
+  border-color: rgba(36, 56, 141, 1);
+  background-color: transparent;
+}
+
+.btn__text {
+  display: inline-flex;
+  white-space: nowrap;
+  width: 55px;
+  height: 15px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 15.4px;
+  letter-spacing: 0em;
+  text-align: center;
+  color: rgba(36, 56, 141, 1);
+  text-decoration: none;
+}
+
+.shake__2 {
+  position: absolute;
+  width: 306px;
+  height: 411px;
+  top: -2px;
+  left: -54px;
+}
+
+.shake__1 {
+  position: absolute;
+  width: 457px;
+  height: 300px;
+  top: 81px;
+  left: 454.75px;
+}

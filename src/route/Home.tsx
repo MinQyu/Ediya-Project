@@ -1,5 +1,11 @@
+import Body from "../components/Body";
+
 function Home() {
-  return <div></div>;
+  return (
+    <div>
+      <Body />
+    </div>
+  );
 }
 
 export default Home;
