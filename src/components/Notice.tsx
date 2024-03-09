@@ -23,7 +23,6 @@ function Notice() {
     ).json();
     const parsedJson = parseNoticeJson(json);
     setNoticeList(parsedJson);
-    console.log(json);
   };
 
   useEffect(() => {
