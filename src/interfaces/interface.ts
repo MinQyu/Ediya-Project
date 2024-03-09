@@ -10,3 +10,10 @@ export interface NoticeData {
   content: string;
   registrationDate: Date;
 }
+
+export interface ResponseNoticeData {
+  index: number;
+  title: string;
+  content: string;
+  registrationDate: string;
+}

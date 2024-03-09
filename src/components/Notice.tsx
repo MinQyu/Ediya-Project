@@ -1,15 +1,15 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
-import { NoticeData } from "../interfaces/interface";
+import { useState, useEffect, useCallback } from "react";
+import { ResponseNoticeData, NoticeData } from "../interfaces/interface";
+import { formatDate } from "../utils/dateUtil";
 import styles from "./Notice.module.css";
 
 function Notice() {
-  const [loading, setLoading] = useState<boolean>(true);
-  const [noticeList, setNoticeList] = useState<NoticeData[]>([]);
+  const [noticeList, setNoticeList] = useState<NoticeData[]>();
   const [noticeIndex, setNoticeIndex] = useState(0);
 
-  const parseNoticeJson = (json: NoticeData[]): NoticeData[] => {
-    return json.map((notice: NoticeData) => ({
+  const parseNoticeJson = (json: ResponseNoticeData[]): NoticeData[] => {
+    return json.map((notice) => ({
       index: notice.index,
       title: notice.title,
       content: notice.content,
@@ -23,101 +23,61 @@ function Notice() {
     ).json();
     const parsedJson = parseNoticeJson(json);
     setNoticeList(parsedJson);
-    setLoading(false);
+    console.log(json);
   };
 
   useEffect(() => {
     getNoticeList();
   }, []);
 
-  const endIndex = noticeList.length - 1;
-  const noticePrev = () => {
-    if (noticeIndex > 0) setNoticeIndex(noticeIndex - 1);
-  };
-  const noticeNext = () => {
-    if (noticeIndex < endIndex) setNoticeIndex(noticeIndex + 1);
-  };
+  const goPrev = useCallback(() => {
+    if (noticeIndex > 0) setNoticeIndex((noticeIndex) => noticeIndex - 1);
+  }, [noticeIndex]);
 
-  const formatDate = (date: Date): string => {
-    const year = String(date.getFullYear());
-    const month = String(date.getMonth()).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    return `${year}.${month}.${day}`;
-  };
+  const endIndex = noticeList ? noticeList.length - 1 : 0;
+
+  const goNext = useCallback(() => {
+    if (noticeIndex < endIndex)
+      setNoticeIndex((noticeIndex) => noticeIndex + 1);
+  }, [noticeIndex, endIndex]);
 
   return (
     <div className={styles.notice_area}>
-      {loading ? (
-        <div>loading..</div>
-      ) : (
+      {noticeList ? (
         <div className={styles.notice_box}>
           <div className={styles.control}>
             <Link to={"/notice"}>NOTICE</Link>
             <button
               className={styles.control__left}
-              onClick={noticePrev}
+              onClick={goPrev}
               disabled={noticeIndex === 0}
-            >
-              <svg width="10" height="10" viewBox="0 0 10 10">
-                <line
-                  x1="6.5"
-                  y1="2.875"
-                  x2="3.5"
-                  y2="5.625"
-                  stroke="white"
-                  strokeWidth="1"
-                />
-                <line
-                  x1="6.5"
-                  y1="7.875"
-                  x2="3.5"
-                  y2="5.125"
-                  stroke="white"
-                  strokeWidth="1"
-                />
-              </svg>
-            </button>
+              style={{
+                backgroundImage: `url(${process.env.PUBLIC_URL}/assets/arrow_left.svg)`
+              }}
+            ></button>
             <button
               className={styles.control__right}
-              onClick={noticeNext}
+              onClick={goNext}
               disabled={noticeIndex === endIndex}
-            >
-              <svg width="10" height="10" viewBox="0 0 10 10">
-                <line
-                  x1="3.5"
-                  y1="2.875"
-                  x2="6.5"
-                  y2="5.625"
-                  stroke="white"
-                  strokeWidth="1"
-                />
-                <line
-                  x1="3.5"
-                  y1="7.875"
-                  x2="6.5"
-                  y2="5.125"
-                  stroke="white"
-                  strokeWidth="1"
-                />
-              </svg>
-            </button>
+              style={{
+                backgroundImage: `url(${process.env.PUBLIC_URL}/assets/arrow_right.svg)`
+              }}
+            ></button>
           </div>
           <div className={styles.content_box}>
             <Link to={"/notice"}>
-              <h3>{noticeList && noticeList[noticeIndex].title}</h3>
+              <h3>{noticeList[noticeIndex].title}</h3>
               <p className={styles.date}>
-                {noticeList &&
-                  formatDate(noticeList[noticeIndex].registrationDate)}
+                {formatDate(noticeList[noticeIndex].registrationDate)}
               </p>
               <p className={styles.content}>
-                {noticeList &&
-                  (noticeList[noticeIndex].content.length > 45
-                    ? `${noticeList[noticeIndex].content.slice(0, 45)}...`
-                    : noticeList[noticeIndex].content)}
+                {noticeList[noticeIndex].content}
               </p>
             </Link>
           </div>
         </div>
+      ) : (
+        <div>loading..</div>
       )}
     </div>
   );
