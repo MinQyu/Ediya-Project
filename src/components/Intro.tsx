@@ -13,7 +13,7 @@ function Intro() {
   }, []);
   return (
     <div style={{ width: "365px", height: "205px" }}>
-      {introId ? (
+      {introId && (
         <iframe
           title="Intro"
           width="100%"
@@ -21,8 +21,6 @@ function Intro() {
           frameBorder="0"
           src={`https://www.youtube.com/embed/${introId}`}
         />
-      ) : (
-        <div></div>
       )}
     </div>
   );
