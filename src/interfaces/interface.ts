@@ -1,4 +1,4 @@
-import { ReactNode } from "react";
+import { ReactNode, Dispatch, SetStateAction } from "react";
 
 export interface LayoutProps {
   children: ReactNode;
@@ -48,4 +48,9 @@ export interface ArticleRequest {
 
 export interface NewsListProps {
   newsList: ArticleData;
+}
+
+export interface PaginationProps {
+  page: Paging;
+  setPage: Dispatch<SetStateAction<ArticleRequest>>;
 }

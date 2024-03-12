@@ -5,6 +5,7 @@ import {
   Paging,
   ArticleRequest
 } from "../interfaces/interface";
+import Pagination from "./Pagination";
 import styles from "./NewsList.module.css";
 
 function NewsList() {
@@ -121,7 +122,11 @@ function NewsList() {
           <div></div>
         )}
       </table>
-      <div className={styles.pagination}></div>
+      {articleList && (
+        <div className={styles.pagination_wrap}>
+          <Pagination page={articleList.paging} setPage={setRequest} />
+        </div>
+      )}
     </div>
   );
 }
