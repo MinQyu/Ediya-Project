@@ -68,8 +68,8 @@ th:nth-child(3) {
   color: rgba(36, 56, 141, 1);
 }
 
-td,
-th {
+.container table td,
+.container table th {
   border-bottom: 0.5px solid rgba(145, 155, 198, 1);
 }
 
