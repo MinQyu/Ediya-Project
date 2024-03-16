@@ -7,7 +7,12 @@
 }
 
 .container button {
-  background-repeat: none;
+  background: none;
+  background-size: 100%;
+  border: none;
+  width: 16px;
+  height: 16px;
+  margin-top: 8px;
 }
 
 .number_box {
