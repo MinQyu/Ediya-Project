@@ -1,3 +1,4 @@
+import { useEffect, useCallback } from "react";
 import { PaginationProps } from "../interfaces/interface";
 import styles from "./Pagination.module.css";
 
@@ -19,25 +20,13 @@ function Pagination({ page, setPage }: PaginationProps) {
     const nextPage = Math.min(currentPage + blockSize, lastPage);
     setPage((prevState) => ({ ...prevState, currentPage: nextPage }));
   };
-
-  const renderPageNumbers = () => {
-    const pageNumbers = [];
+  const getPageNumbers = () => {
     const startPage = Math.max(1, currentPage - Math.floor(blockSize / 2));
     const endPage = Math.min(lastPage, startPage + blockSize - 1);
-
-    for (let i = startPage; i <= endPage; i++) {
-      pageNumbers.push(
-        <span
-          key={i}
-          className={i === currentPage ? styles.active : ""}
-          onClick={() => handlePageClick(i)}
-        >
-          {i}
-        </span>
-      );
-    }
-
-    return pageNumbers;
+    return Array.from(
+      { length: endPage - startPage + 1 },
+      (_, i) => i + startPage
+    );
   };
 
   return (
@@ -49,7 +38,19 @@ function Pagination({ page, setPage }: PaginationProps) {
         onClick={handlePrevClick}
         disabled={currentPage === 1}
       />
-      <div className={styles.number_box}>{renderPageNumbers()}</div>
+      <div className={styles.number_box}>
+        {getPageNumbers().map((number) => {
+          return (
+            <span
+              key={number}
+              className={number == currentPage ? styles.selected : ""}
+              onClick={() => handlePageClick(number)}
+            >
+              {number}
+            </span>
+          );
+        })}
+      </div>
       <button
         style={{
           backgroundImage: `url(${process.env.PUBLIC_URL}/assets/page_next.svg)`

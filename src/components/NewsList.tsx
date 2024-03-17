@@ -48,7 +48,6 @@ function NewsList() {
     ).json();
     const parsedJson = parseArticleJson(json);
     setArticleList(parsedJson);
-    console.log(parsedJson);
   };
 
   const formatDate = (date: Date): string => {

@@ -37,7 +37,7 @@
   cursor: pointer;
 }
 
-.number_box span.active {
+.number_box span.selected {
   font-weight: 700;
   color: rgba(36, 56, 141, 1);
 }
