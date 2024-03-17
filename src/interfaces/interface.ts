@@ -4,16 +4,14 @@ export interface LayoutProps {
   children: ReactNode;
 }
 
-export interface NoticeData {
-  index: number;
-  title: string;
-  content: string;
-  registrationDate: Date;
-}
-
 export interface ResponseNoticeData {
   index: number;
   title: string;
   content: string;
   registrationDate: string;
+}
+
+export interface NoticeData
+  extends Omit<ResponseNoticeData, "registrationDate"> {
+  registrationDate: Date;
 }

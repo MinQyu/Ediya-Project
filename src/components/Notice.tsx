@@ -10,9 +10,7 @@ function Notice() {
 
   const parseNoticeJson = (json: ResponseNoticeData[]): NoticeData[] => {
     return json.map((notice) => ({
-      index: notice.index,
-      title: notice.title,
-      content: notice.content,
+      ...notice,
       registrationDate: new Date(notice.registrationDate)
     }));
   };
@@ -29,16 +27,17 @@ function Notice() {
     getNoticeList();
   }, []);
 
-  const goPrev = useCallback(() => {
-    if (noticeIndex > 0) setNoticeIndex((noticeIndex) => noticeIndex - 1);
-  }, [noticeIndex]);
+  const goPrev = () => {
+    setNoticeIndex((prevIndex) => (prevIndex > 0 ? prevIndex - 1 : prevIndex));
+  };
 
   const endIndex = noticeList ? noticeList.length - 1 : 0;
 
-  const goNext = useCallback(() => {
-    if (noticeIndex < endIndex)
-      setNoticeIndex((noticeIndex) => noticeIndex + 1);
-  }, [noticeIndex, endIndex]);
+  const goNext = () => {
+    setNoticeIndex((prevIndex) =>
+      prevIndex < endIndex ? prevIndex + 1 : prevIndex
+    );
+  };
 
   return (
     <div className={styles.notice_area}>
