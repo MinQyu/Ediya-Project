@@ -1,32 +1,30 @@
-import { useEffect, useCallback } from "react";
 import { PaginationProps } from "../interfaces/interface";
 import styles from "./Pagination.module.css";
 
-function Pagination({ page, setPage }: PaginationProps) {
-  const { currentPage, lastPage, blockSize } = page;
+function Pagination({ paging, setPage }: PaginationProps) {
+  const { currentPage, blockSize, lastPage } = paging;
+  const startPage = Math.floor((currentPage - 1) / blockSize) * 10 + 1;
+  const endPage =
+    startPage + blockSize - 1 <= lastPage
+      ? startPage + blockSize - 1
+      : lastPage;
+  const pageNumbers = Array.from(
+    { length: endPage - startPage + 1 },
+    (_, i) => i + startPage
+  );
 
   const handlePageClick = (pageNum: number) => {
     if (pageNum !== currentPage) {
-      setPage((prevState) => ({ ...prevState, currentPage: pageNum }));
+      setPage(pageNum);
     }
   };
 
   const handlePrevClick = () => {
-    const prevPage = Math.max(currentPage - blockSize, 1);
-    setPage((prevState) => ({ ...prevState, currentPage: prevPage }));
+    if (startPage - blockSize > 0) setPage(startPage - blockSize);
   };
 
   const handleNextClick = () => {
-    const nextPage = Math.min(currentPage + blockSize, lastPage);
-    setPage((prevState) => ({ ...prevState, currentPage: nextPage }));
-  };
-  const getPageNumbers = () => {
-    const startPage = Math.max(1, currentPage - Math.floor(blockSize / 2));
-    const endPage = Math.min(lastPage, startPage + blockSize - 1);
-    return Array.from(
-      { length: endPage - startPage + 1 },
-      (_, i) => i + startPage
-    );
+    if (startPage + blockSize < lastPage) setPage(startPage + blockSize);
   };
 
   return (
@@ -39,7 +37,7 @@ function Pagination({ page, setPage }: PaginationProps) {
         disabled={currentPage === 1}
       />
       <div className={styles.number_box}>
-        {getPageNumbers().map((number) => {
+        {pageNumbers.map((number) => {
           return (
             <span
               key={number}

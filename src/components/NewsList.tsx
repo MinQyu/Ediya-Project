@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import {
+  ResponseArticles,
   Articles,
   ArticleData,
   Paging,
@@ -15,23 +16,29 @@ function NewsList() {
     keywordType: "",
     currentPage: 1
   });
+  const setPage = (page: number) => {
+    setRequest((prevRequest) => ({ ...prevRequest, currentPage: page }));
+  };
+
   const selectRef = useRef<HTMLSelectElement>(null);
   const searchRef = useRef<HTMLInputElement>(null);
-  const parseArticleJson = (json: ArticleData): ArticleData => {
-    const articles: Articles[] = json.articles.map((article: Articles) => ({
-      sn: article.sn,
-      imgSrc: article.imgSrc,
-      title: article.title,
-      content: article.content,
-      registrationDate: new Date(article.registrationDate)
-    }));
+
+  const parseArticleJson = (json: {
+    articles: ResponseArticles[];
+    paging: Paging;
+  }): ArticleData => {
+    const articles: Articles[] = json.articles.map(
+      (article: ResponseArticles) => ({
+        ...article,
+        registrationDate: new Date(article.registrationDate)
+      })
+    );
     const paging: Paging = {
-      currentPage: json.paging.currentPage,
-      lastPage: json.paging.lastPage,
-      blockSize: json.paging.blockSize
+      ...json.paging
     };
     return { articles, paging };
   };
+
   const makeSearchParams = (request: ArticleRequest) => {
     return new URLSearchParams({
       keyword: request.keyword,
@@ -39,6 +46,7 @@ function NewsList() {
       currentPage: request.currentPage.toString()
     }).toString();
   };
+
   const getArticleList = async () => {
     const searchParams = makeSearchParams(request);
     const json = await (
@@ -46,8 +54,8 @@ function NewsList() {
         `https://homely-susi-hyeonqyu.koyeb.app/api/article/articles?${searchParams}`
       )
     ).json();
-    const parsedJson = parseArticleJson(json);
-    setArticleList(parsedJson);
+    const parsedArticleJson = parseArticleJson(json);
+    setArticleList(parsedArticleJson);
   };
 
   const formatDate = (date: Date): string => {
@@ -99,7 +107,7 @@ function NewsList() {
         </thead>
         {articleList ? (
           articleList.articles.length === 0 ? (
-            <div className={styles.no_list}>검색 결과가 없습니다</div>
+            <span className={styles.no_list}>검색 결과가 없습니다</span>
           ) : (
             <tbody>
               {articleList.articles.map((article, index) => (
@@ -118,12 +126,12 @@ function NewsList() {
             </tbody>
           )
         ) : (
-          <div></div>
+          <tbody></tbody>
         )}
       </table>
       {articleList && (
         <div className={styles.pagination_wrap}>
-          <Pagination page={articleList.paging} setPage={setRequest} />
+          <Pagination paging={articleList.paging} setPage={setPage} />
         </div>
       )}
     </div>

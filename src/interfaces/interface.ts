@@ -11,7 +11,7 @@ export interface NoticeData {
   registrationDate: Date;
 }
 
-export interface Articles {
+export interface ResponseArticles {
   // 순서
   sn: number;
   // 이미지 경로
@@ -21,8 +21,14 @@ export interface Articles {
   // 기사 내용
   content: string;
   // 날짜
+  registrationDate: string;
+}
+
+export interface Articles extends Omit<ResponseArticles, "registrationDate"> {
+  // 날짜
   registrationDate: Date;
 }
+
 export interface Paging {
   // 현재 페이지
   currentPage: number;
@@ -51,6 +57,6 @@ export interface NewsListProps {
 }
 
 export interface PaginationProps {
-  page: Paging;
-  setPage: Dispatch<SetStateAction<ArticleRequest>>;
+  paging: Paging;
+  setPage: (arg0: number) => void;
 }
