@@ -2,12 +2,14 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 100%;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.1);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 500;
+  cursor: pointer;
+  z-index: 1000;
 }
 
 .modal {
@@ -20,22 +22,15 @@
   height: 373px;
   border: 1px solid rgba(204, 204, 204, 1);
   background: rgba(255, 255, 255, 0.6);
+  z-index: 1100;
+  cursor: default;
 }
 
-.modal button {
+.modal svg {
   position: absolute;
-  width: 20px;
-  height: 20px;
   top: 16px;
   left: 323px;
   cursor: pointer;
-  border: none;
-  background: none;
-}
-
-.modal button img {
-  width: 12.8px;
-  height: 12.8px;
 }
 
 .header {

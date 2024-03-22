@@ -1,10 +1,16 @@
-import { useState, useEffect } from "react";
-import styles from "./DrinkDetail.module.css";
+import { useState, useEffect, useRef } from "react";
 import { ModalProps, DDrinkDetail } from "../interfaces/DrinkInterface";
+import ModalCloseButton from "./svg_buttons/ModalCloseButton";
+import styles from "./DrinkDetail.module.css";
 
 function DrinkDetail({ sn, onClose }: ModalProps) {
-  const [loading, setLoading] = useState<boolean>(true);
   const [drinkDetail, setDrinkDetail] = useState<DDrinkDetail>();
+  const modalRef = useRef<HTMLDivElement>(null);
+  const modalOverlayClick = (event: any) => {
+    if (modalRef.current === event.target) {
+      onClose();
+    }
+  };
   const getDrinkDetail = async () => {
     const json = await (
       await fetch(
@@ -12,61 +18,70 @@ function DrinkDetail({ sn, onClose }: ModalProps) {
       )
     ).json();
     setDrinkDetail(json.detail);
-    setLoading(false);
   };
 
   useEffect(() => {
+    const handleKeyDown = (event: any) => {
+      if (event.keyCode === 27) onClose();
+    };
     getDrinkDetail();
+    document.body.style.overflow = "hidden";
+    document.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "auto";
+    };
   }, []);
-  const handleClose = (event: any) => {
-    onClose();
-  };
 
   return (
-    <div className={styles.modal_overlay} onClick={handleClose}>
-      {loading ? (
-        <div></div>
-      ) : (
+    <div
+      className={styles.modal_overlay}
+      ref={modalRef}
+      onClick={modalOverlayClick}
+    >
+      {drinkDetail && (
         <div className={styles.modal}>
-          <button onClick={handleClose}>
-            <img src={process.env.PUBLIC_URL + "/assets/Black.svg"}></img>
-          </button>
+          <ModalCloseButton onClick={onClose} />
           <div className={styles.header}>
-            <h3>{drinkDetail && drinkDetail.title}</h3>
-            <h4>{drinkDetail && drinkDetail.englishTitle}</h4>
+            <h3>{drinkDetail.title}</h3>
+            <h4>{drinkDetail.englishTitle}</h4>
           </div>
           <div className={styles.content}>
-            <p>{drinkDetail && drinkDetail.description}</p>
+            <p>{drinkDetail.description}</p>
           </div>
           <div className={styles.footer_box}>
             <table>
-              <tr>
-                <td>칼로리</td>
-                <td>{drinkDetail && `(${drinkDetail.calorie}kcal)`}</td>
-              </tr>
-              <tr>
-                <td>당류</td>
-                <td>{drinkDetail && `(${drinkDetail.sugars}g)`}</td>
-              </tr>
-              <tr>
-                <td>단백질</td>
-                <td>{drinkDetail && `(${drinkDetail.protein}g)`}</td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td>칼로리</td>
+                  <td>{`(${drinkDetail.calorie}kcal)`}</td>
+                </tr>
+                <tr>
+                  <td>당류</td>
+                  <td>{`(${drinkDetail.sugars}g)`}</td>
+                </tr>
+                <tr>
+                  <td>단백질</td>
+                  <td>{`(${drinkDetail.protein}g)`}</td>
+                </tr>
+              </tbody>
             </table>
             <div className={styles.vertical_line} />
             <table>
-              <tr>
-                <td>포화지방</td>
-                <td>{drinkDetail && `(${drinkDetail.saturatedFat}g)`}</td>
-              </tr>
-              <tr>
-                <td>나트륨</td>
-                <td>{drinkDetail && `(${drinkDetail.natrium}mg)`}</td>
-              </tr>
-              <tr>
-                <td>카페인</td>
-                <td>{drinkDetail && `(${drinkDetail.caffeine}mg)`}</td>
-              </tr>
+              <tbody>
+                <tr>
+                  <td>포화지방</td>
+                  <td>{`(${drinkDetail.saturatedFat}g)`}</td>
+                </tr>
+                <tr>
+                  <td>나트륨</td>
+                  <td>{`(${drinkDetail.natrium}mg)`}</td>
+                </tr>
+                <tr>
+                  <td>카페인</td>
+                  <td>{`(${drinkDetail.caffeine}mg)`}</td>
+                </tr>
+              </tbody>
             </table>
           </div>
         </div>
