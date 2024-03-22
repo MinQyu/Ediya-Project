@@ -40,7 +40,7 @@
 .container table {
   width: 710px;
   height: 486px;
-  margin-top: 46px;
+  margin-top: 20px;
   border-top: 2px solid rgba(36, 56, 141, 1);
   border-bottom: 2px solid rgba(36, 56, 141, 1);
   border-collapse: collapse;
@@ -145,7 +145,5 @@ th:nth-child(3) {
 .pagination_wrap {
   width: 346px;
   height: 32px;
-  margin-top: 15px;
-  margin: 0 auto;
-  padding: 0px, 18px, 0px, 17px;
+  margin: 15px auto;
 }

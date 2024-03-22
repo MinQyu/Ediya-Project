@@ -25,19 +25,20 @@
 }
 
 .number_box span {
-  width: 8px;
-  height: 12px;
-  padding: 2px 4px;
+  display: flex;
+  width: 16px;
+  height: 16px;
   font-size: 12px;
   font-weight: 400;
   line-height: 12px;
   letter-spacing: -0.04em;
-  text-align: center;
+  align-items: center;
+  justify-content: center;
   color: rgba(145, 155, 198, 1);
   cursor: pointer;
 }
 
-.number_box span.active {
+.number_box span.selected {
   font-weight: 700;
   color: rgba(36, 56, 141, 1);
 }
