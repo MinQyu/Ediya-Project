@@ -1,4 +1,4 @@
-.homeContainer {
+.container {
   align-items: center;
 }
 
@@ -12,8 +12,9 @@
   background: rgba(245, 245, 245, 1);
 }
 
-.promotionContainer {
+.promotion_box {
   position: absolute;
+  display: flex;
   width: 740px;
   height: 205px;
   top: 62px;
