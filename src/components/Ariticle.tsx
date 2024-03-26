@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Articles, Paging, ArticleData } from "../interfaces/interface";
+import { formatDate } from "../utils/dateUtil";
 import styles from "./Article.module.css";
 
 function Article() {
@@ -43,12 +44,6 @@ function Article() {
     console.log(json);
     setArticleList(parsedJson);
     setLoading(false);
-  };
-  const formatDate = (date: Date): string => {
-    const year = String(date.getFullYear());
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    return `${year}.${month}.${day}`;
   };
 
   useEffect(() => {
