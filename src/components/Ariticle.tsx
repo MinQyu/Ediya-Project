@@ -65,32 +65,19 @@ function Article() {
           </Link>
           <h3>NEWS</h3>
           <div className={styles.article_content_wrap}>
-            <div className={styles.article_content_upper}>
-              <p className={styles.article_content__title}>
-                {articleData &&
-                  articleData.articles[articleData.articles.length - 1].title}
-              </p>
-              <p className={styles.article_content__date}>
-                {articleData &&
-                  formatDate(
-                    articleData.articles[articleData.articles.length - 1]
-                      .registrationDate
-                  )}
-              </p>
-            </div>
-            <div className={styles.article_content_lower}>
-              <p className={styles.article_content__title}>
-                {articleData &&
-                  articleData.articles[articleData.articles.length - 2].title}
-              </p>
-              <p className={styles.article_content__date}>
-                {articleData &&
-                  formatDate(
-                    articleData.articles[articleData.articles.length - 2]
-                      .registrationDate
-                  )}
-              </p>
-            </div>
+            {articleData &&
+              articleData.articles.slice(-2).map((article) => {
+                return (
+                  <div className={styles.article_content}>
+                    <p className={styles.article_content__title}>
+                      {article.title}
+                    </p>
+                    <p className={styles.article_content__date}>
+                      {formatDate(article.registrationDate)}
+                    </p>
+                  </div>
+                );
+              })}
           </div>
         </div>
       )}
