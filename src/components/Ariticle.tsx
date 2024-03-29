@@ -66,18 +66,21 @@ function Article() {
           <h3>NEWS</h3>
           <div className={styles.article_content_wrap}>
             {articleData &&
-              articleData.articles.slice(-2).map((article) => {
-                return (
-                  <div className={styles.article_content}>
-                    <p className={styles.article_content__title}>
-                      {article.title}
-                    </p>
-                    <p className={styles.article_content__date}>
-                      {formatDate(article.registrationDate)}
-                    </p>
-                  </div>
-                );
-              })}
+              articleData.articles
+                .slice(-2)
+                .sort((a, b) => a.sn - b.sn)
+                .map((article) => {
+                  return (
+                    <div className={styles.article_content}>
+                      <p className={styles.article_content__title}>
+                        {article.title}
+                      </p>
+                      <p className={styles.article_content__date}>
+                        {formatDate(article.registrationDate)}
+                      </p>
+                    </div>
+                  );
+                })}
           </div>
         </div>
       )}
