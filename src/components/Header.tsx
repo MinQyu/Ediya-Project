@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styles from "./Header.module.css";
 
 function Header() {
   const [activeLink, setActiveLink] = useState("");
 
-  const handleLinkClick = (link: any) => {
+  const handleLinkClick = (link: string) => {
     setActiveLink(link);
   };
 
