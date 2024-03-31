@@ -1,12 +1,14 @@
 import Home from "./route/Home";
 import Drink from "./route/Drink";
 import News from "./route/News";
+import ScrollToTop from "./components/ScrollToTop";
 import Layout from "./components/Layout";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (
     <Router>
+      <ScrollToTop />
       <Layout>
         <Routes>
           <Route path="/drink" element={<Drink />} />
