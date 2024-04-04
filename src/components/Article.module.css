@@ -58,14 +58,8 @@
   color: rgba(245, 245, 245, 1);
 }
 
-.article_content_upper p {
+.article_content p {
   display: inline-flex;
-}
-
-.article_content_lower p{
-  position: absolute;
-  display: inline-flex;
-  top: 21px;
 }
 
 .article_content__title {
