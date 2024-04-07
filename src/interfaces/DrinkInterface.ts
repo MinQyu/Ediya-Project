@@ -1,11 +1,9 @@
 export interface DrinkRequest {
   // 불러오기를 요청할 시작 index - 1부터
   start: number;
-  // 불러올 데이터 갯수
-  size: number;
 }
 
-export interface DDrink {
+export interface DrinkType {
   // sn
   sn: number;
   // 음료 이름
@@ -21,12 +19,12 @@ export interface Paging {
   lastIndex: number;
 }
 
-export interface DrinkData {
-  drink: DDrink[];
+export interface DrinkResponse {
+  drink: DrinkType[];
   paging: Paging;
 }
 
 export interface DrinkListProps {
   key: number;
-  drink: DDrink;
+  drink: DrinkType;
 }
