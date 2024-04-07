@@ -1,23 +1,29 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Articles, Paging, ArticleData } from "../interfaces/interface";
+import {
+  ResponseArticles,
+  Articles,
+  Paging,
+  ArticleData
+} from "../interfaces/interface";
+import { formatDate } from "../utils/dateUtil";
 import styles from "./Article.module.css";
 
 function Article() {
   const [loading, setLoading] = useState<boolean>(true);
-  const [articleList, setArticleList] = useState<ArticleData>();
-  const parseArticleJson = (json: ArticleData): ArticleData => {
-    const articles: Articles[] = json.articles.map((article: Articles) => ({
-      sn: article.sn,
-      imgSrc: article.imgSrc,
-      title: article.title,
-      content: article.content,
-      registrationDate: new Date(article.registrationDate)
-    }));
+  const [articleData, setArticleData] = useState<ArticleData>();
+  const parseArticleJson = (json: {
+    articles: ResponseArticles[];
+    paging: Paging;
+  }): ArticleData => {
+    const articles: Articles[] = json.articles.map(
+      (article: ResponseArticles) => ({
+        ...article,
+        registrationDate: new Date(article.registrationDate)
+      })
+    );
     const paging: Paging = {
-      currentPage: json.paging.currentPage,
-      lastPage: json.paging.lastPage,
-      blockSize: json.paging.blockSize
+      ...json.paging
     };
     return { articles, paging };
   };
@@ -32,7 +38,7 @@ function Article() {
       currentPage: currentPage.toString()
     }).toString();
   };
-  const getArticleList = async () => {
+  const getArticleData = async () => {
     const request = makeRequest("", "", 24);
     const json = await (
       await fetch(
@@ -40,19 +46,12 @@ function Article() {
       )
     ).json();
     const parsedJson = parseArticleJson(json);
-    console.log(json);
-    setArticleList(parsedJson);
+    setArticleData(parsedJson);
     setLoading(false);
-  };
-  const formatDate = (date: Date): string => {
-    const year = String(date.getFullYear());
-    const month = String(date.getMonth() + 1).padStart(2, "0");
-    const day = String(date.getDate()).padStart(2, "0");
-    return `${year}.${month}.${day}`;
   };
 
   useEffect(() => {
-    getArticleList();
+    getArticleData();
   }, []);
 
   return (
@@ -66,32 +65,22 @@ function Article() {
           </Link>
           <h3>NEWS</h3>
           <div className={styles.article_content_wrap}>
-            <div className={styles.article_content_upper}>
-              <p className={styles.article_content__title}>
-                {articleList &&
-                  articleList.articles[articleList.articles.length - 1].title}
-              </p>
-              <p className={styles.article_content__date}>
-                {articleList &&
-                  formatDate(
-                    articleList.articles[articleList.articles.length - 1]
-                      .registrationDate
-                  )}
-              </p>
-            </div>
-            <div className={styles.article_content_lower}>
-              <p className={styles.article_content__title}>
-                {articleList &&
-                  articleList.articles[articleList.articles.length - 2].title}
-              </p>
-              <p className={styles.article_content__date}>
-                {articleList &&
-                  formatDate(
-                    articleList.articles[articleList.articles.length - 2]
-                      .registrationDate
-                  )}
-              </p>
-            </div>
+            {articleData &&
+              articleData.articles
+                .slice(-2)
+                .sort((a, b) => a.sn - b.sn)
+                .map((article) => {
+                  return (
+                    <div className={styles.article_content}>
+                      <p className={styles.article_content__title}>
+                        {article.title}
+                      </p>
+                      <p className={styles.article_content__date}>
+                        {formatDate(article.registrationDate)}
+                      </p>
+                    </div>
+                  );
+                })}
           </div>
         </div>
       )}

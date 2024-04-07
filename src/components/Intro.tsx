@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 
 function Intro() {
-  const [introId, setIntroId] = useState<string>("");
+  const [introId, setIntroId] = useState<string>();
   const getIntroId = async () => {
     const url = await (
       await fetch(`https://homely-susi-hyeonqyu.koyeb.app/api/intro`)
@@ -12,13 +12,17 @@ function Intro() {
     getIntroId();
   }, []);
   return (
-    <iframe
-      title="Intro"
-      width="365px"
-      height="205px"
-      frameBorder="0"
-      src={`https://www.youtube.com/embed/${introId}`}
-    ></iframe>
+    <div style={{ width: "365px", height: "205px" }}>
+      {introId && (
+        <iframe
+          title="Intro"
+          width="100%"
+          height="100%"
+          frameBorder="0"
+          src={`https://www.youtube.com/embed/${introId}`}
+        />
+      )}
+    </div>
   );
 }
 
