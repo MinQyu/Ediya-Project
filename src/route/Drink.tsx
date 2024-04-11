@@ -13,7 +13,7 @@ function Drink() {
   const [request, setRequest] = useState<DrinkRequest>({
     start: 1
   });
-  const requestSize = 8;
+  const REQUEST_SIZE = 8;
   const [drinkList, setDrinkList] = useState<DrinkType[]>([]);
 
   const parseDrinkJson = (json: DrinkResponse): DrinkType[] => {
@@ -27,7 +27,7 @@ function Drink() {
   const makeRequestParams = (request: DrinkRequest) => {
     return new URLSearchParams({
       start: request.start.toString(),
-      size: requestSize.toString()
+      size: REQUEST_SIZE.toString()
     }).toString();
   };
 
@@ -50,7 +50,7 @@ function Drink() {
 
   const requestUpdate = () => {
     setRequest((prevRequest) => ({
-      start: prevRequest.start + requestSize
+      start: prevRequest.start + REQUEST_SIZE
     }));
   };
 
