@@ -21,8 +21,8 @@ function DrinkDetail({ sn, onClose }: ModalProps) {
   };
 
   useEffect(() => {
-    const handleKeyDown = (event: any) => {
-      if (event.keyCode === 27) onClose();
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") onClose();
     };
     getDrinkDetail();
     document.body.style.overflow = "hidden";
