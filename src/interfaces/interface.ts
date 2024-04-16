@@ -4,19 +4,14 @@ export interface LayoutProps {
   children: ReactNode;
 }
 
-export interface ResponseNoticeData {
+export interface NoticeData {
   index: number;
   title: string;
   content: string;
-  registrationDate: string;
-}
-
-export interface NoticeData
-  extends Omit<ResponseNoticeData, "registrationDate"> {
   registrationDate: Date;
 }
 
-export interface ResponseArticles {
+export interface Articles {
   // 순서
   sn: number;
   // 이미지 경로
@@ -26,14 +21,8 @@ export interface ResponseArticles {
   // 기사 내용
   content: string;
   // 날짜
-  registrationDate: string;
-}
-
-export interface Articles extends Omit<ResponseArticles, "registrationDate"> {
-  // 날짜
   registrationDate: Date;
 }
-
 export interface Paging {
   // 현재 페이지
   currentPage: number;
