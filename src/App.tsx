@@ -2,6 +2,7 @@ import Home from "./route/Home";
 import Drink from "./route/Drink";
 import News from "./route/News";
 import Layout from "./components/Layout";
+import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
