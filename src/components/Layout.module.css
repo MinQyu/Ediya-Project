@@ -1,12 +1,9 @@
-* {
-  margin: 0;
-  padding: 0;
-}
 
 .container {
-  margin: 0 auto;
+  position: relative;
+  justify-content: center;
   width: 1440px;
-  height: 900px;
+  min-height: 900px;
 }
 
 .headerContainer {
@@ -20,8 +17,7 @@
 }
 
 .footer_wrap {
-  position: absolute;
+  position: relative;
   width: 1440px;
   height: 238px;
-  top: 900px;
 }

@@ -53,10 +53,8 @@
   top: 79px;
   left: 84px;
   border: 1px solid rgba(245, 245, 245, 1);
-  cursor: pointer;
   background: none;
-  background-position: center;
-  background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .control__right {
@@ -69,10 +67,8 @@
   top: 79px;
   left: 99px;
   border: 1px solid rgba(245, 245, 245, 1);
-  cursor: pointer;
   background: none;
-  background-position: center;
-  background-repeat: no-repeat;
+  cursor: pointer;
 }
 
 .content_box {
@@ -96,8 +92,6 @@
   letter-spacing: -0.02em;
   text-align: left;
   color: rgba(36, 56, 141, 1);
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .date {
@@ -126,6 +120,4 @@
   letter-spacing: -0.02em;
   text-align: left;
   color:rgba(20, 24, 44, 0.9);
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
