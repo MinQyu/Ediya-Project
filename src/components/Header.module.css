@@ -28,7 +28,7 @@
   gap: 8px;
 }
 
-.item {
+.menu li {
   font-size: 15px;
   font-weight: 400;
   line-height: 22.2px;
@@ -36,7 +36,11 @@
   color: #24388d;
 }
 
-.item a {
+.menu li a {
   text-decoration: none;
   color: #24388d;
+}
+
+.menu li.active a{
+  font-weight: 700;
 }
