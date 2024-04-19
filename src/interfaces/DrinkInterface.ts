@@ -5,7 +5,7 @@ export interface DrinkRequest {
   size: number;
 }
 
-export interface DDrink {
+export interface DrinkType {
   // sn
   sn: number;
   // 음료 이름
@@ -22,13 +22,13 @@ export interface Paging {
 }
 
 export interface DrinkData {
-  drink: DDrink[];
+  drink: DrinkType[];
   paging: Paging;
 }
 
 export interface DrinkListProps {
   key: number;
-  drink: DDrink;
+  drink: DrinkType;
 }
 
 export interface ModalProps {
@@ -36,7 +36,7 @@ export interface ModalProps {
   onClose: () => void;
 }
 
-export interface DDrinkDetail {
+export interface DrinkDetail {
   // 음료 이름
   title: number;
   // 음료 영문 이름

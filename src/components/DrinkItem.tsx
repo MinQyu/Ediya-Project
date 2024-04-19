@@ -1,9 +1,9 @@
 import { useState } from "react";
 import DrinkDetail from "./DrinkDetail";
-import { DDrink } from "../interfaces/DrinkInterface";
+import { DrinkType } from "../interfaces/DrinkInterface";
 import styles from "./DrinkItem.module.css";
 
-function DrinkItem({ sn, title, imgSrc }: DDrink) {
+function DrinkItem({ sn, title, imgSrc }: DrinkType) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const openModal = () => {
     setIsModalOpen(true);
