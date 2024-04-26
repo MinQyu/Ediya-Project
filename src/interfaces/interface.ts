@@ -60,3 +60,11 @@ export interface PaginationProps {
   paging: Paging;
   setPage: (arg0: number) => void;
 }
+
+interface SetSelectedItem extends Dispatch<SetStateAction<string>> {}
+
+export interface NavigationBarProps {
+  items: string[];
+  selectedItem: string;
+  setSelectedItem: SetSelectedItem;
+}

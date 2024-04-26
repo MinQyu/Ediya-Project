@@ -5,6 +5,7 @@ import styles from "./News.module.css";
 
 function News() {
   const [selectedItem, setSelectedItem] = useState<string>("공지사항");
+  const items = ["공지사항", "언론 속 이디야", "홍보영상", "수상내역"];
 
   const renderContent = () => {
     switch (selectedItem) {
@@ -38,6 +39,7 @@ function News() {
     <div className={styles.container}>
       <div className={styles.navigation_wrap}>
         <NavigationBar
+          items={items}
           selectedItem={selectedItem}
           setSelectedItem={setSelectedItem}
         />
