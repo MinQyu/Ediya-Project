@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { NavigationBarProps } from "../interfaces/interface";
 import styles from "./NavigationBar.module.css";
 
