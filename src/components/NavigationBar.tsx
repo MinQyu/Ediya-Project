@@ -10,7 +10,6 @@ function NavigationBar({
   const handleItemClick = (event: React.MouseEvent<HTMLLIElement>) => {
     const clickedItem = event.currentTarget.innerText;
     setSelectedItem(clickedItem);
-    console.log(selectedItem);
   };
 
   return (
