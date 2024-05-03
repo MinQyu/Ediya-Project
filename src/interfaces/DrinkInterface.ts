@@ -28,3 +28,29 @@ export interface DrinkListProps {
   key: number;
   drink: DrinkType;
 }
+
+export interface ModalProps {
+  sn: number;
+  onClose: () => void;
+}
+
+export interface DrinkDetail {
+  // 음료 이름
+  title: number;
+  // 음료 영문 이름
+  englishTitle: string;
+  // 상품 설명
+  description: string;
+  // 칼로리
+  calorie: number;
+  // 설탕
+  sugars: number;
+  // 단백질
+  protein: number;
+  // 포화지방
+  saturatedFat: number;
+  // 나트륨
+  natrium: number;
+  // 카페인
+  caffeine: number;
+}
