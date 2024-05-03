@@ -1,8 +1,6 @@
 export interface DrinkRequest {
   // 불러오기를 요청할 시작 index - 1부터
   start: number;
-  // 불러올 데이터 갯수
-  size: number;
 }
 
 export interface DrinkType {
@@ -21,7 +19,7 @@ export interface Paging {
   lastIndex: number;
 }
 
-export interface DrinkData {
+export interface DrinkResponse {
   drink: DrinkType[];
   paging: Paging;
 }

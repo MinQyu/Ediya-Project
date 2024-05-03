@@ -1,37 +1,38 @@
 import { useState, useEffect } from "react";
 import _ from "lodash";
-import DrinkList from "../components/DrinkList";
+import DrinkItem from "../components/DrinkItem";
 import {
-  DDrink,
-  Paging,
-  DrinkData,
+  DrinkType,
+  DrinkResponse,
   DrinkRequest
 } from "../interfaces/DrinkInterface";
 import styles from "./Drink.module.css";
 
 function Drink() {
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loading, setLoading] = useState<boolean>(false);
   const [request, setRequest] = useState<DrinkRequest>({
-    start: 1,
-    size: 8
+    start: 1
   });
-  const [drinkList, setDrinkList] = useState<DDrink[]>([]);
+  const REQUEST_SIZE = 8;
+  const [drinkList, setDrinkList] = useState<DrinkType[]>([]);
 
-  const parseDrinkJson = (json: DrinkData): DDrink[] => {
-    return json.drink.map((drink: DDrink) => ({
+  const parseDrinkJson = (json: DrinkResponse): DrinkType[] => {
+    return json.drink.map((drink: DrinkType) => ({
       sn: Number(drink.sn),
       title: drink.title,
       imgSrc: drink.imgSrc
     }));
   };
+
   const makeRequestParams = (request: DrinkRequest) => {
     return new URLSearchParams({
       start: request.start.toString(),
-      size: request.size.toString()
+      size: REQUEST_SIZE.toString()
     }).toString();
   };
 
   const getDrinkList = async () => {
+    setLoading(true);
     const requestParams = makeRequestParams(request);
     const json = await (
       await fetch(
@@ -45,48 +46,43 @@ function Drink() {
 
   useEffect(() => {
     getDrinkList();
-    console.log(request.start);
   }, [request.start]);
 
   const requestUpdate = () => {
     setRequest((prevRequest) => ({
-      start: prevRequest.start + request.size,
-      size: request.size
+      start: prevRequest.start + REQUEST_SIZE
     }));
   };
 
   const debouncedRequestUpdate = _.debounce(requestUpdate, 1000);
 
-  function handleScroll() {
+  const handleScroll = () => {
     if (window.innerHeight + window.scrollY >= document.body.offsetHeight) {
       debouncedRequestUpdate();
     }
-  }
+  };
 
   useEffect(() => {
-    window.addEventListener("scroll", handleScroll);
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, []);
+    if (!loading) window.addEventListener("scroll", handleScroll);
+    else
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+      };
+  }, [loading]);
 
   return (
     <div className={styles.container}>
-      {loading ? (
-        <div>loading..</div>
-      ) : (
-        <div className={styles.drink_list}>
-          {drinkList &&
-            drinkList.map((drink) => (
-              <DrinkList
-                key={drink.sn}
-                sn={drink.sn}
-                title={drink.title}
-                imgSrc={drink.imgSrc}
-              />
-            ))}
-        </div>
-      )}
+      <div className={styles.drink_list}>
+        {drinkList &&
+          drinkList.map((drink) => (
+            <DrinkItem
+              key={drink.sn}
+              sn={drink.sn}
+              title={drink.title}
+              imgSrc={drink.imgSrc}
+            />
+          ))}
+      </div>
     </div>
   );
 }

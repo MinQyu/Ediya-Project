@@ -5,6 +5,7 @@ import styles from "./DrinkItem.module.css";
 
 function DrinkItem({ sn, title, imgSrc }: DrinkType) {
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  
   const openModal = () => {
     setIsModalOpen(true);
     document.body.style.overflow = "hidden";
@@ -32,7 +33,6 @@ function DrinkItem({ sn, title, imgSrc }: DrinkType) {
       <p>{title}</p>
       {isModalOpen && <DrinkDetail sn={sn} onClose={closeModal} />}
     </div>
-  );
 }
 
 export default DrinkItem;
