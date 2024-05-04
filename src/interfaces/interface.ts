@@ -1,4 +1,4 @@
-import { ReactNode, Dispatch, SetStateAction } from "react";
+import { ReactNode, ReactElement, Dispatch, SetStateAction } from "react";
 
 export interface LayoutProps {
   children: ReactNode;
@@ -67,4 +67,19 @@ export interface NavigationBarProps {
   items: string[];
   selectedItem: string;
   setSelectedItem: SetSelectedItem;
+}
+
+export interface ContentTemplateProps {
+  contentName: string;
+  contentHeadline: string;
+  contentComponent: React.ReactNode;
+}
+
+export interface ContentItem {
+  headline: string;
+  component: JSX.Element;
+}
+
+export interface ContentMap {
+  [key: string]: ContentItem;
 }

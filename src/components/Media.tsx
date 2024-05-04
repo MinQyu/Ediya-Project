@@ -7,9 +7,9 @@ import {
   ArticleRequest
 } from "../interfaces/interface";
 import Pagination from "./Pagination";
-import styles from "./NewsList.module.css";
+import styles from "./Media.module.css";
 
-function NewsList() {
+function Media() {
   const [articleList, setArticleList] = useState<ArticleData>();
   const [request, setRequest] = useState<ArticleRequest>({
     keyword: "",
@@ -138,4 +138,4 @@ function NewsList() {
   );
 }
 
-export default NewsList;
+export default Media;

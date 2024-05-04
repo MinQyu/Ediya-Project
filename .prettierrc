@@ -4,7 +4,7 @@
   "useTabs": false,
   "semi": true,
   "singleQuote": false,
-  "quoteProps": "as-needed",
+  "quoteProps": "consistent",
   "jsxSingleQuote": false,
   "trailingComma": "none",
   "bracketSpacing": true,
@@ -12,5 +12,5 @@
   "arrowParens": "always",
   "requirePragma": false,
   "insertPragma": false,
-  "proseWrap": "preserve"
+  "proseWrap": "preserve",
 }
