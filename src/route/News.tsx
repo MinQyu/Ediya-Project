@@ -1,40 +1,36 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import NavigationBar from "../components/NavigationBar";
-import NewsList from "../components/NewsList";
+import ContentTemplate from "../components/ContentTemplate";
+import Announcements from "../components/Announcements";
+import Media from "../components/Media";
+import PromotionalVideo from "../components/PromotionalVideo";
+import Awards from "../components/Awards";
+import { ContentMap } from "../interfaces/interface";
 import styles from "./News.module.css";
 
 function News() {
-  const [selectedItem, setSelectedItem] = useState<string>("공지사항");
-  const items = ["공지사항", "언론 속 이디야", "홍보영상", "수상내역"];
+  const contentMap: ContentMap = {
+    "공지사항": {
+      headline: "미구현",
+      component: <Announcements />
+    },
+    "언론 속 이디야": {
+      headline: "이디야의 소식을 전해드립니다",
+      component: <Media />
+    },
+    "홍보영상": {
+      headline: "미구현",
+      component: <PromotionalVideo />
+    },
+    "수상내역": {
+      headline: "이디야의 영광스런 수상내역입니다",
+      component: <Awards />
+    }
+  };
+  const items = Object.keys(contentMap);
+  const [selectedItem, setSelectedItem] = useState<string>(items[0]);
+  const { component, headline } = contentMap[selectedItem];
 
-  const renderContent = () => {
-    switch (selectedItem) {
-      case "공지사항":
-        return <div></div>;
-      case "언론 속 이디야":
-        return <NewsList />;
-      case "홍보영상":
-        return <div></div>;
-      case "수상내역":
-        return <div></div>;
-      default:
-        return null;
-    }
-  };
-  const headlineContent = () => {
-    switch (selectedItem) {
-      case "공지사항":
-        return "";
-      case "언론 속 이디야":
-        return "이디야의 소식을 전해드립니다";
-      case "홍보영상":
-        return "";
-      case "수상내역":
-        return "이디야의 영광스런 수상내역입니다";
-      default:
-        return null;
-    }
-  };
   return (
     <div className={styles.container}>
       <div className={styles.navigation_wrap}>
@@ -44,14 +40,11 @@ function News() {
           setSelectedItem={setSelectedItem}
         />
       </div>
-      <div className={styles.headline}>
-        <h3>
-          <span>\</span>
-          {selectedItem}
-        </h3>
-        <p>{headlineContent()}</p>
-      </div>
-      <div className={styles.news_list_wrap}>{renderContent()}</div>
+      <ContentTemplate
+        contentName={selectedItem}
+        contentHeadline={headline}
+        contentComponent={component}
+      />
     </div>
   );
 }
