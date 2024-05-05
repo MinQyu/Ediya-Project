@@ -25,8 +25,8 @@ function Header() {
             이디야 음료
           </Link>
         </li>
-        <li className={`${activeLink === "/news" ? styles.active : ""}`}>
-          <Link to="/news" onClick={() => handleLinkClick("/news")}>
+        <li className={`${activeLink === "/ediya-news" ? styles.active : ""}`}>
+          <Link to="/ediya-news" onClick={() => handleLinkClick("/ediya-news")}>
             이디야 뉴스
           </Link>
         </li>
