@@ -6,9 +6,9 @@ import Media from "../components/Media";
 import PromotionalVideo from "../components/PromotionalVideo";
 import Awards from "../components/Awards";
 import { ContentMap } from "../interfaces/interface";
-import styles from "./News.module.css";
+import styles from "./EdiyaNews.module.css";
 
-function News() {
+function EdiyaNews() {
   const contentMap: ContentMap = {
     "공지사항": {
       headline: "미구현",
@@ -49,4 +49,4 @@ function News() {
   );
 }
 
-export default News;
+export default EdiyaNews;

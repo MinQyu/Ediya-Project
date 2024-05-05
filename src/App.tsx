@@ -1,6 +1,6 @@
 import Home from "./route/Home";
 import Drink from "./route/Drink";
-import News from "./route/News";
+import EdiyaNews from "./route/EdiyaNews";
 import ScrollToTop from "./components/ScrollToTop";
 import Layout from "./components/Layout";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -12,7 +12,7 @@ function App() {
       <Layout>
         <Routes>
           <Route path="/drink" element={<Drink />} />
-          <Route path="/news" element={<News />} />
+          <Route path="/ediya-news" element={<EdiyaNews />} />
           <Route path={`${process.env.PUBLIC_URL}/`} element={<Home />} />
         </Routes>
       </Layout>
